@@ -1,0 +1,15 @@
+form{
+    margin: 75px;
+}
+ol{
+    padding-left: 25px;
+}
+td{
+    border: 1px solid black;
+}
+li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}

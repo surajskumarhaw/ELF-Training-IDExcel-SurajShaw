@@ -1,0 +1,41 @@
+form{
+    background-color: rgb(130, 111, 238);
+    padding: 25px;
+    width: 850px;
+    color: white;
+    font-weight: bold;
+    margin-left: 300px;
+}
+.a{
+    text-align: center;
+}
+.b{
+    margin-left: 211px;
+}
+.c{
+    text-align: center;
+}
+.col1 {
+    float: left;
+    width: 25%;
+    margin-top: 10px;
+}
+  
+.col2 {
+    float: left;
+    width: 75%;
+    margin-top: 10px;
+}
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+input[type="date"]
+{
+    width: 156px;
+}
+table{
+    border: 1px solid black;
+}

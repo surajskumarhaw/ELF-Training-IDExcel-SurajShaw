@@ -1,0 +1,77 @@
+
+					CSS Properties
+	------------------------------------------------------------------------------------------------------------------
+	
+1.	border - Property for border-width, border-style and border-color.
+
+2.	border - collapse - Sets whether table borders should collapse into a single border or be separated.
+
+3.	text-align - Specifies the horizontal alignment of text.
+
+4.	padding - Property for all the padding.
+
+5.	border-radius - Property for the four border.
+
+6.	width - Sets the width of an element.
+
+7.	margin - Sets all the margin properties in one declaration.
+
+8.	background-color - Specifies the background color of an element.
+
+9.	color - Sets the color of text.
+
+10.	cursor - Specifies the mouse cursor to be displayed when pointing over an element.
+
+11.	list-style-type - Specifies the type of list-item marker.
+
+12.	overflow - Specifies what happens if content overflows an element's box.
+
+13.	float - Specifies whether or not a box should float.
+
+14.	height - Sets the height of an element.
+
+15.	text-decoration - Specifies the decoration added to text.
+
+16.	font-size - Specifies the font size of text.
+
+17.	transition - Property for all the transition.
+
+18.	transform - Applies a 2D or 3D transformation to an elemen.
+
+19.	background-image - Specifies one or more background images for an element.
+
+20.	background-size - Specifies the size of the background images.
+
+21.	background-repeat - Sets if/how a background image will be repeated.
+
+22.	font-family - Specifies the font family for text.
+
+23.	outline - Property for the outline-width, outline-style, and the outline-color properties.
+
+24.	border-top-left-radius - Defines the radius of the border of the top-left corner.
+
+25.	border-top-right-radius - Defines the radius of the border of the top-right corner.
+
+26.	font-weight - Specifies the weight of a font.
+
+27.	content - Used with the :before and :after pseudo-elements, to insert generated content.
+
+28.	display - Specifies how a certain HTML element should be displayed.
+
+29.	clear - Specifies on which sides of an element floating elements are not allowed to float.
+
+30.	margin-top - Sets the top margin of an element.
+
+31.	margin-left - Sets the left margin of an element.
+
+32.	margin-bottom - Sets the bottom margin of an element.
+
+33.	margin-right - Sets the right margin of an element.
+
+34.	padding-top - Sets the top padding of an element.
+
+35.	padding-left - Sets the left padding of an element.
+
+36.	padding-bottom - Sets the bottom padding of an element.
+
+37.	padding-right - Sets the right padding of an element.

@@ -1,0 +1,50 @@
+body{
+    background-color: gray;
+}
+form{
+    border: 1px solid black;
+    width: 506px;
+    height: 540px;
+    margin-top: 95px;
+    margin-left: 480px;
+    border-radius: 20px;
+    background-color:black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    color: rgb(156, 156, 156);
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+.a{
+    padding: 50px;
+    padding-left: 56px;
+}
+input{
+    width: 175px;
+    height: 25px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border: black;
+    background-color: gainsboro;
+}
+.d{
+    width: 383px;
+}
+.b{
+    margin-left: 18px;
+}
+::placeholder{
+    color: black;
+}
+input[type="submit"]{
+    color: whitesmoke;
+    margin-left: 234px;
+    margin-top: 30px;
+    width: 160px;
+    height: 45px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: rgb(93, 168, 18);
+}

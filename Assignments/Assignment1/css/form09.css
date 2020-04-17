@@ -1,0 +1,24 @@
+form{
+    margin: 100px;
+}
+h2{
+    text-align: center;
+}
+li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.a{
+    border: 1px solid black;
+    width: 150px;
+    margin-left: 240px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+tr,td{
+    border: 2px solid white;
+    background-color: rgb(177, 243, 255);
+}
+.c{
+    margin-left: 330px;
+}

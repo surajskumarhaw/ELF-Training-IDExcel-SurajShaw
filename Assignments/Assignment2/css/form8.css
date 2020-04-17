@@ -1,0 +1,92 @@
+body{
+    background-color: rgb(63, 69, 75);
+    font-family: sans-serif;
+}
+h1, h6{
+    text-align: center;
+    color: rgb(124, 123, 123);
+}
+.a{
+    color: rgb(180, 178, 178);
+}
+.b{
+    color: rgba(67, 163, 236, 0.979);
+}
+h2{
+    text-align: center;
+    padding-top: 15px;
+    background-color: rgb(87, 89, 102);
+    color: rgb(163, 160, 160);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-bottom: 15px;
+    font-weight: normal;
+}
+form{
+    width: 400px;
+    height: 540px;
+    margin-top: 42px;
+    margin-left: 541px;
+    background-color: rgb(48, 48, 61);
+    border-radius: 15px;
+}
+div{
+    margin-left: 15px;
+}
+input[type="text"], input[type="password"]{
+    width: 337px;
+    height: 27px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(87, 89, 102);
+}
+.c{
+    color: rgb(163, 160, 160);
+    font-weight: bold; 
+}
+::placeholder{
+    padding-left: 15px;
+    color: rgb(163, 160, 160);
+}
+.d{
+    margin-left: 26px;
+}
+.d label{
+    color: rgb(139, 139, 139);
+    font-size: 13px;
+}
+.e{
+    margin-left: 14px;
+    margin-top: 12px;
+    margin-bottom: 14px;
+    width: 108px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 153, 255, 0.568);
+    color: white;
+    font-weight: bold;
+}
+hr{
+    margin-left: 25px;
+    margin-right: 25px;
+    border:1px solid rgb(59, 59, 94);
+}
+p{
+    color: rgb(163, 160, 160);
+    text-align: center;
+    font-size: 13px;
+}
+.f input[type="submit"]{
+    margin-left: 14px;
+    margin-top: 12px;
+    margin-bottom: 14px;
+    width: 336px;
+    height: 31px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(104, 106, 122);;
+    color: white;
+    font-weight: bold;
+}

@@ -1,0 +1,18 @@
+form{
+    margin: 100px;
+}
+h2{
+    text-align: center;
+}
+h3{
+    color: cornflowerblue;
+}
+.a,.b,.c{
+    background-color: rgba(213, 226, 190, 0.877);
+}
+.c{
+    font-style: italic;
+}
+table{
+    width: 1260px;
+}

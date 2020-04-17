@@ -1,0 +1,41 @@
+body{
+    background-image: url('/images/the-fog-4909513_1280.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+form{
+    margin-top: 135px;
+    margin-left: 440px;
+}
+h2{
+    font-family: sans-serif;
+    color: white;
+    font-size: 50px;
+    font-weight: lighter;
+}
+div{
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+input[type="text"],input[type="password"]{
+    width: 630px;
+    height: 29px;
+    background-color: rgba(54, 73, 88, 0.377);
+    border: 1px solid gray;
+    padding-left: 20px;
+}
+::placeholder{
+    color: gainsboro;
+}
+.a{
+    color: white;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+input[type="submit"]{
+    width: 652px;
+    height: 40px;
+    background-color: rgb(30, 161, 248);
+    border: 0.5px solid gray;
+    color: white;
+}

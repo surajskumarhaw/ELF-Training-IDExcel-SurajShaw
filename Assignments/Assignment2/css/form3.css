@@ -1,0 +1,28 @@
+.a{
+    color: white;
+    background-color: rgba(255, 175, 71, 0.849);
+    font-size: 22px;
+    font-family: sans-serif;
+}
+.b{
+    background-color: rgba(255, 145, 71, 0.438);
+    font-family: sans-serif;
+}
+.c{
+    color: white;
+    background-color: gray;
+    font-family: sans-serif;
+}
+table{
+    width: 1000px;
+    height: 500px;   
+    margin-left: 225px;
+    margin-top: 100px;
+}
+.d{
+    text-align: right;
+    padding-right: 10px;
+}
+.e{
+    padding-left: 10px;
+}

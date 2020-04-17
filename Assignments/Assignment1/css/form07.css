@@ -1,0 +1,30 @@
+form{
+    margin: 75px;
+}
+h2{
+    font-style: italic;
+    color: rgb(4, 57, 156);
+    font-family: arial;
+    
+}
+table,tr,th,td{
+    border: 1px solid blue;
+}
+thead,th{
+    background-color: rgb(179, 198, 233);
+    height: 50px;
+    color: rgb(4, 57, 156);
+    font-weight: bold;
+    font-family: arial;
+}
+.a{
+    background-color: rgb(213, 218, 226);
+    color: rgb(4, 57, 156);
+    font-weight: bold;
+    font-family: arial;
+}
+.b{
+    color: rgb(4, 57, 156);
+    font-weight: bold;
+    font-family: arial;
+}
