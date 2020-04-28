@@ -1,0 +1,134 @@
+body{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* ----------------for navbar--------------- */
+
+.navbar{
+    background-color: rgba(0, 0, 0, 0.63);
+    height: 80px;
+}
+.navbar-nav{
+    float: right;
+    list-style-type: none;
+    margin-top: 18px;
+    margin-right: 50px;
+}
+.navbar-nav .nav-item{
+    float: left;
+    margin-left: 5px;
+}
+#home{
+    color: rgb(233, 150, 94);
+}
+.navbar-nav .nav-item .nav-link{
+    font-size: 18px;
+    text-decoration: none;
+    padding: 14px 20px 30px;
+    transition: 0.5s ease;
+}
+.navbar-nav .nav-item .nav-link:hover{
+    color: rgb(233, 150, 94);
+    text-decoration: none;
+}
+.navbar-nav .nav-item .sign{
+    border-radius: 20px;
+    font-weight: bold;
+    background-color: rgb(108, 176, 221);
+    padding: 13px 23px 15px 23px;
+}
+
+/* --------------for carousel------------------ */
+
+#carouselExampleControls img{
+    height: 600px;
+}
+
+/* ------------------Images------------------- */
+     
+.image img{
+    width: 300px;
+    height: 280px;
+    margin: 17px;
+    transition: all 1s;
+    box-shadow: 15px 15px 12px #858585;
+}
+.image img:hover{
+    transform: scale(1.1,1.1);
+}
+#img h2, #about h2, #footer h2{
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    color: rgb(109, 152, 163);;
+    font-size: 50px;
+}
+
+/* ---------------------about us-------------------- */
+.cust{
+    border-radius: 20px;
+    margin-top: 50px;
+    background-color: rgba(11, 112, 90, 0.493);
+    box-shadow: 5px 1px 10px 8px #888888;
+}
+.container{
+    height: auto;
+    width: auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 5px 1px 10px 8px #888888;
+    margin-top: 35px;
+}
+.img-responsive {
+    width: 200px;
+    height: 200px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    transition: all 1s;
+    box-shadow: 15px 15px 12px rgba(11, 112, 90, 0.39);
+}
+.fig {
+    padding-bottom: 15px;
+}
+
+.fig h3 {
+    font-weight: bolder;
+    font-size: 35px;
+}
+dt, dd {
+    margin-bottom: 5px;
+}
+.detail h4{
+    color: rgba(11, 112, 90, 0.726);
+}
+
+
+/* -------------Contact Us-------------- */
+.contact{
+    background-image: url(/images/texture-2068283_1920.jpg);
+}
+.foot{
+    padding-top: 50px;
+    color: rgb(0, 0, 0);
+    padding-bottom: 50px;
+}
+
+
+
+/* ---------------------for footer----------------------- */
+
+.end{
+    background-color: rgba(0, 0, 0, 0.63);
+    overflow: hidden;
+    width: auto;
+    height: 78px;
+}
+.end a{
+    margin-right: 40px;
+}
+.social{
+     margin-top: 36px;
+    text-align: center;
+}
