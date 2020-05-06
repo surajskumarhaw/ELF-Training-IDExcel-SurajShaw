@@ -1,0 +1,227 @@
+-------------------------------------------------------------------------------------------------------------------
+=======================     PostgreSQL Queries    =============================
+-------------------------------------------------------------------------------------------------------------------
+
+
+1.  Write a query to check the version ? 
+--- select version();
+
+2.  Write a query to show all the database ?
+--- \l
+
+3.  Write a query to create database ?
+--- create database Database_Name; 
+
+4.  Write a query to use a perticular Database ?
+--- \c Database_Name
+
+5.  Write a query to clear the screen ?
+--- \! cls
+
+6.  Write a query to check whether the data is present in a particular database or not ?
+--- \d
+
+7.  Write a query to describe a perticular table ?
+--- \d Table_Name
+
+
+--------
+  DDL
+--------
+
+8.  Write a query to create a table ?
+Syntax : create table Table_Name(Column_Name1 datatype constraints,Column_Name2 datatype constraints);
+	Ex - create table Table_Name(id int primary key,name varchar(150) not null ,email varchar(200));
+	     - create table Employee(empId int primary key,ename varchar(150),designation varchar(150),hiredate date not null, sal double precision,age int,emailId varchar(150),deptno int,mobileNo bigint not null);
+
+9.  Write a query to alter a table ?
+Syntax :  alter table Table_Name add column Column_Name int;
+
+10.  Write a query to remove a column ?
+Syntax :  alter table Table_Name drop column Column_Name;
+
+11.  Write a query to change the name of the column ?
+Syntax :   alter table Table_Name rename column Old_Column_Name to New_Column_Name;
+
+12.  Write a query to change the name of the table ?
+Syntax :   alter table Old_Table_Name rename to New_Table_Name;
+
+13.  Write a query to change the database name ?
+Syntax :  alter database Old_Database_Name rename to New_Database_Name;
+
+14.  Write a query to drop the database ?
+Syntax :   drop database DB_Name;
+
+15.  Write a query to drop the table ?
+Syntax :   drop table Table_Name;
+
+
+---------
+  DML
+---------
+
+16.  Write a query to insert a data into table ?
+Syntax :   insert into Table_Name (Column_Name1 ,Column_Name2 , Column_Name3 ,Column_Name4) values(value1,value2,value3,value4);
+	Ex - insert into person(id,name,email) values(1,'Suraj','suraj@xyz.com');
+
+Question
+------------
+- WAQ to insert more than one record in a same query-
+- insert into employee values (1011,'srestha','hr','2019-05-10',555100.65,22,'srestha@gamil.com',10,5871245674),(1012,'richa','hr','2019-06-10',55510.65,22,'richa@gamil.com',20,9871245674);
+
+
+17.  Write a query to update a date into table ?
+Syntax :  update Table_Name set Column_Name=value;
+		Ex - update employee set sal=250000;
+		        update employee set sal=250000 where eid=1007;
+
+18.  Write a query to delete a record from the table ?
+Syntax :   delete from Table_Name;
+		Ex - delete from employee;
+		       delete from employee where eid=1008 ;
+
+
+
+----------
+  DQL
+----------
+
+===>There are 3 different ways to retrive the data from the table
+	1. Projection: selecting a column. 
+	    Ex - select ename from employee;
+	2. Selection: selecting rows as well as column.  
+	    Ex - select * from employee;
+	3. Join: retrival of data from multiple table in a same time.
+
+===>Order of execution
+	1. from
+	2. where
+	3. select
+
+19.  Write a query to show the table data ?
+Syntax :   select * / [Distinct] Column_Name / Expression [Alias] from Table_Name;
+	Ex - select * from employee;
+	       select ename from employee;
+	       select * from employee where empid=1006;
+
+Question
+-----------
+- WAQ to display name, deptno, doj ?
+- select ename,deptno,hiredate from employee;
+
+WHERE Clause
+-------------------
+- It it use to filter the data.
+- It goes row wise.
+- If the condition satisfy then only it will proceed further
+  Syntax :  select * from Table_Name where condition;
+
+Questions
+------------
+- Write a query to delete a record whose eid is 1008 ?
+   - delete from employee where eid=1008 ;
+
+- Write a query to update sal to 250000 whose eid is 1007 ?
+   - update employee set sal=250000 where eid=1007;
+
+- Write a query to show the details whose eid is 1007 ?
+   - select * from employee where empid=1006;
+
+
+======================================================================================================
+
+20. WAQ to delete a record whose empid is 1003 ?
+---  delete from employee where empid=1003;
+
+
+Expression :
+---------------
+- Expression is a statement which gives result.
+- Expression consist of operators and operand.
+
+    Ex - 8=4+4	+ operators 
+		4,8 operand
+    Ex - incrSal = sal + 500   incrSal - statement
+	
+Operands :
+-------------
+1. Column_Name
+2. Literals :
+              The direct value or real value used in the SQL statement.
+                 2.1  Number - The direct value used as a number type is know as number literals.
+	2.2  Character - 'suraj'
+	2.3  Date - '2020-02-28'
+
+Operators :
+-------------
+- An operator is reserved word or a character used primarily in an SQL statement.
+
+1. Airthmetic Operators --- (+,-,*,/,%)
+2. Comparison Operators --- (=, <, >, >=, <=, !=, <>)
+3. Logical Operators --- (AND, OR)
+4. Special Operators ---
+
+
+Alias :
+--------
+Alias are used to give a table or column in a table, a temporary name.
+
+Syntax : select Column_Name AS Alias_Name from Table_Name AS Alias_Name;
+              select Column_Name Alias_Name from Table_Name Alias_Name;
+
+21. Write a query to display desgination as job_type ?
+---  select desgination as job_type from employee;
+---  select desgination job_type from employee;
+
+Assignment Questions
+--------------------------
+22. Write a query to obtained ename and current_sal and new_sal with the hike of 25% of all emp;
+---  select ename,sal curr_sal,((sal*25)/100)+sal new_sal from employee;
+---  select ename,sal curr_sal,sal*1.25 new_sal from employee;
+
+23. Write a query to display all the record of the emp and incremented sal of 500 with each emp;
+---  select employee.*,sal+500 incremented_sal from employee;
+
+24. Write a query to display all the record of the emp and decrement sal of 500 with each emp;
+---  select employee.*,sal-500 decremented_sal from employee;
+
+25. Write a query to display name, sal and annual sal of all the emp;
+---  select ename,sal,sal*12 annual_sal from employee;
+
+26. Write a query to display per day sal ?
+---  select sal/30 per_day_sal from employee;
+
+
+================================================================================================
+
+Distinct :
+----------
+-- If the single value has passed then it will elemenate the duplicate value.
+-- If i'm having more than one column name is passed then it will remove the combination of duplicate. 
+
+Syntax : select distinct column_name from table_name;
+Ex - select distinct ename from employee;
+
+27. WAQ for show the two distinct column name ?
+---  select distinct ename ,deptno from employee;
+
+28. WAQ to display all the employee who is working in deptno=10 ?
+---  select * from employee where deptno=10;
+
+29. WAQ to display all the employee whose sal is greater than 10k ?
+---  select * from employee where sal>10000;
+
+30. WAQ to display all the employee whose sal is greater than and equal to 10k ?
+---  select * from employee where sal>=10000;
+
+31. WAQ to display all the employee whose sal is less than 10k ?
+---  select * from employee where sal<10000;
+
+32. WAQ to display all the employee whose sal is less than and equal to 10k ?
+---  select * from employee where sal<=10000;
+
+30. WAQ to display all the employee whose sal is not equal to 10k ?
+---  select * from employee where sal!=10000;
+---  select * from employee where sal<>10000;
+   
+
