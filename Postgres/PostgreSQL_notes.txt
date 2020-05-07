@@ -158,7 +158,7 @@ Operators :
 
 1. Airthmetic Operators --- (+,-,*,/,%)
 2. Comparison Operators --- (=, <, >, >=, <=, !=, <>)
-3. Logical Operators --- (AND, OR)
+3. Logical Operators --- (AND, OR, NOT)
 4. Special Operators ---
 
 
@@ -223,5 +223,74 @@ Ex - select distinct ename from employee;
 30. WAQ to display all the employee whose sal is not equal to 10k ?
 ---  select * from employee where sal!=10000;
 ---  select * from employee where sal<>10000;
-   
+
+
+===================================================================================================
+
+Logical Operators :
+----------------------
+
+   AND operator : 
+----------------------
+Note : If both the condition is true then we proceed further.
+
+input1  input2      output
+-------  --------      -------
+   0           0               0
+   0           1               0
+   1           0               0
+   1           1               1
+
+Syntax : SELECT * FROM table_name WHERE condition 1 AND condition 2;
+
+
+31. WAQ to display all employee who is working as hr and his deptno is 20 ?
+---  select * from employee where designation='hr' and deptno=20;
+
+32. WAQ to display all the record of the employee who is working as a salesman and doj is after 2018 ?
+---  select * from employee where designation='salesman' and hiredate>'10-01-2018';
+
+33.  WAQ to display all the record  of the employee who is working as a hr in deptno 20 only if sal > 25000 ?
+---   select * from employee where designation='hr' and deptno=20 and sal>25000;
+
+
+  OR operator :
+------------------
+Note : If only one condition is true then we proceed further.
+
+input1  input2      output
+-------  --------      -------
+   0           0               0
+   0           1               1
+   1           0               1
+   1           1               1
+
+Syntax : SELECT * FROM table_name WHERE condition 1 OR condition 2;
+
+34.  WAQ to display employee working in dept 10,20 ?
+---   select * from employee where deptno =10 or deptno =20;
+
+35.  WAQ to display name, sal, deptno who is working as tester or whose sal=15000 ?
+---   select ename,sal,deptno from employee where designation='tester' or sal=15000;
+
+36.  WAQ to display name of all employee working as tester as well as deptno 30 or working as clerk and whose  sal>=15000 ?
+---   select ename from employee where (designation='tester' and deptno=30) or (designation='tester' and sal>=15000);
+
+  NOT operator :
+--------------------
+Note : If we don't have to pass the condition.
+
+input  output
+------  --------
+   0          1
+   1          0
+
+Syntax : SELECT * FROM table_name WHERE NOT condition;
+
+37.  WAQ to display all the employee except deptno 10 ?
+---   select * from employee where not deptno=10;
+
+
+===================================================================================================
+
 
