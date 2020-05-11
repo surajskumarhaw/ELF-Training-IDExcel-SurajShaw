@@ -159,7 +159,7 @@ Operators :
 1. Airthmetic Operators --- (+,-,*,/,%)
 2. Comparison Operators --- (=, <, >, >=, <=, !=, <>)
 3. Logical Operators --- (AND, OR, NOT)
-4. Special Operators ---
+4. Special Operators --- (IN, BETWEEN, IS, LIKE)
 
 
 Alias :
@@ -292,5 +292,121 @@ Syntax : SELECT * FROM table_name WHERE NOT condition;
 
 
 ===================================================================================================
+
+Order of execution of logical operator :
+-----------------------------------------------
+1. NOT
+2. AND
+3. OR
+
+38.  WAQ to display all the record of employee excluding hr who is working in deptno. 30 ?
+---   select * from employee where not (designation='hr' and deptno=30);
+
+39.   WAQ to display all the employee who has hired after jan-2015 working as tester in deptno 20 or display all the employee who where hired before 2015 ?
+---   select * from employee where (hiredate>'31-01-2015' and designation='tester' and deptno=20) or (hiredate<'01-01-2015');
+
+40.  WAQ  to display all the record of the employee who is working in deptno 10 or 30 or 40 or 20 ?
+---   select * from employee where deptno=10 or deptno=40 or deptno=30 or deptno=20;
+
+
+
+Special operator :
+---------------------
+
+IN operator : 
+---------------
+Syntax : SELECT* FROM table_name WHERE column_name IN(value1, value2, ....., value n);
+
+41.  WAQ  to display all the record of the employee who is working in deptno 10 or 30 or 40 or 20 ?
+---   select * from employee where deptno IN(10,20,30,40);
+
+42.  WAQ to display all the record of the employee who is working as salesman, hr or tester ?
+---   select * from employee where designation IN('salesman','hr','tester');
+
+
+NOT IN operator :
+----------------------
+Syntax : SELECT * FROM table_name WHERE column_name NOT IN(value1, value2, ....., value n);
+
+43.  WAQ to display all the record of the employee who are working in deptno 20,30,40 excluding salesman, hr ?
+---   select * from employee where deptno IN(20,30,40) and designation NOT IN('salesman','hr');
+
+
+BETWEEN operator :
+-------------------------
+Syntax : SELECT * FROM table_name WHERE column_name BETWEEN value1 AND value2;
+
+44.  WAQ to display all the record of the employee whose sal range within 20000 to 40000 ?
+---   select * from employee where sal>20000 and sal<40000;
+
+45.  WAQ to display the detail of employee who where hired during 2014 ?
+---   select * from employee where hiredate BETWEEN '01-01-2014' and '31-12-2014';
+
+46.  WAQ to display ename,sal who are working in deptno 10,20 and there annual sal between 40k to 50k ?
+---   select ename, sal*12 annual_sal from employee where deptno in(10,20) and (sal*12 between 400000 and 5000000);
+
+
+NOT BETWEEN operator :
+--------------------------------
+Syntax : SELECT* FROM table_name WHERE column_name NOT BETWEEN value1 AND value2;
+
+47.  WAQ to display all the employee excluding those who are hired in 2017 ?
+---   select * from employee where hiredate NOT BETWEEN '01-01-2017' and '31-12-2017';
+
+
+IS operator :
+---------------
+Syntax : SELECT * FROM table_name WHERE column_name IS NULL;
+
+NULL : It means no value not either 0 or space.
+a+NULL=NULL
+
+IS operator is used to check only the null value.
+
+
+IS NOT operator :
+---------------------
+Syntax : SELECT * FROM table_name WHERE column_name IS NOT NULL;
+
+
+========================================================================================================
+
+LIKE operator :
+-------------------
+It is used to perform pattern matching.
+
+Syntax : SELECT * FROM table_name WHERE column_name LIKE '%/_';
+
+Character
+-----------
+Ordinary Character : Which don't have any special behaviour or meaning.
+	Ex : a-z, 0-9, A-Z
+Special Character : Which have special behaviour or meaning.
+	Ex : *, _ (underescore), %(Percentage)
+
+
+48. WAQ to display all the record of the employee whose name starts with 'r' ?
+---  select * from employee where ename like 'r%';
+
+49. WAQ to display all the record of the employee whose name having only 3 character ?
+---  select * from employee where ename like '___';
+
+50. WAQ to display all the record of the employee who has at least 2 'l' in there name ?
+---  select * from employee where ename like '%l%l%';
+
+51. WAQ to display all the record of the employee whose name starts with 's' and ends with 't' ?
+---  select * from employee where ename like 's%t';
+
+52. WAQ to display all the record of the employee whose name length 5 and starts with 's' and l should be the second last character ?
+---  select * from employee where ename like 's__l_';
+
+53. WAQ to display all the record of the employee if the employee name began with 's' or 'a' ?
+---  select * from employee where ename like 's%' or ename like 'a%';
+
+54. WAQ to display all the record of the employee excluding 1st name began with 's' and 't' ?
+---  select * from employee where ename not like 's%' and ename not like 't%';
+
+
+=======================================================================================================
 
 
