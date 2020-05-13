@@ -409,4 +409,54 @@ Special Character : Which have special behaviour or meaning.
 
 =======================================================================================================
 
+Functions :
+-------------
+It is used to perform some specific task.
+
+Types of function :
+----------------------
+1. Aggregate function (multi row function) 
+--------------------------------------------------
+	- n no. of input 
+	- 1output
+	- EX - AVG()-return average value,
+	          COUNT()-it counts the number of row,
+	          MAX()-return maximum value of the column, 
+	          MIN()-return minimum value of the column,
+	          SUM()-return sum of all the value of the column.
+
+	1) AVG()
+	-----------
+	Syntax : select avg(column_name) from table_name;
+	Ex - select avg(sal) from employee;
+
+	2) COUNT()
+	---------------
+	Syntax : select count(column_name) from table_name;
+	Ex - select count(*) from employee;
+
+	3) MAX()
+	-----------
+	Syntax : select MAX(column_name) from table_name;
+	Ex - select max(sal) from employee;
+
+	4) MIN()
+	-----------
+	Syntax : select MIN(column_name) from table_name;
+	Ex - select min(sal) from employee;
+
+	5) SUM()
+	-----------
+	Syntax : select SUM(column_name) from table_name;
+	Ex - select sum(sal) from employee;
+
+55. WAQ to display all aggregate function?
+---  select sum(sal) sumsal,avg(sal) avgsal,count(*) noofcol, max(sal) maxsal,min(sal) minsal from employee;
+
+2. Scalar function (single row function)
+----------------------------------------------
+	- n no. of input
+	- n no. of output
+	- EX - upper(), 
+
 
