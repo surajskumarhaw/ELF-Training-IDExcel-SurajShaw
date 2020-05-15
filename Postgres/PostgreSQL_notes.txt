@@ -457,6 +457,78 @@ Types of function :
 ----------------------------------------------
 	- n no. of input
 	- n no. of output
-	- EX - upper(), 
+	- EX - upper() - It converts the value of a field to uppercase,
+	           lower() - It converts the value of a field to lowercase,
+	           length() - It returns the length of the value in a text field,
+	           concat() - It is used to concatenate two strings,
+	           reverse() - It is use to reverse a string.
 
+===========================================================================================
+
+Order By :
+------------
+Order By clause is used to sort the table either ascending order or descending order.
+By default the order is in ascending order.
+Order by clause always execute after the select clause.
+Order by clause should always the last clause in the query.
+If the group by clause used with order by clause we can use multi row function only for the cloumn name.
+In order by clause we used alias name.
+
+Syntax : SELECT column1, column2/* FROM table_name ORDER BY column1 ASC|DESC;
+
+56. WAQ to display all the record of the employee according to the sal is in desc order ?
+--- select * from employee order by sal desc;
+
+57. WAQ to display all the record of the employee and sort the record in desc order of hiredate if there are more then one emp hired on the same date the highest sal should be shown first ?
+---  select * from employee order by hiredate desc,sal desc;
+
+58.  WAQ to display ename, sal, annual_sal and sort the record in desc order in their annual_sal ?
+---   select ename,sal,sal*12 as annual_sal from employee order by annual_sal desc;
+
+59.  WAQ to display name,designation of all the emp who are working in either of the dept 10,20,30 and sort the record in asc order by there sal ?
+---   select ename,designation from employee where deptno in(10,20,30) order by sal;
+
+
+==============================================================================================
+
+Group By :
+-------------
+The GROUP BY statement groups rows that have the same values into summary rows.
+The GROUP BY statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns.
+GB clause execute row by rows.
+After the execution of GB clause the records are grouped therefore all the clauses which execute after the execution of GB clause.
+
+order of execution - from -> where -> group by -> select
+
+Syntax : SELECT column_name(s)/*  FROM table_name WHERE condition GROUP BY column_name(s);
+
+60.  WAQ to display no. of count of the employee working in each dept ?
+---   select count(*) from employee group by deptno; 
+---   select count(*),deptno from employee group by deptno; 
+
+61.  WAQ to display the highest sal of employee in each dept ?
+---   select max(sal) from employee group by deptno;
+---   select max(sal),deptno from employee group by deptno;
+
+62.  WAQ to display no. of tester working in each dept ?
+---   select count(*) from employee where designation='tester' group by deptno;
+---   select count(*),deptno from employee where designation='tester' group by deptno;
+
+
+Having Clause :
+------------------
+Having clause is use to filter the group on condition.
+Having clause is always used with group by clause.
+Having clause always execute after the execution of Group By clause.
+In having clause we can only use a cloumn which is used in a group by clause.
+
+order of execution - from -> where -> group by -> having -> select
+
+Syntax : SELECT column_name(s)/*  FROM table_name WHERE row_filter_condition GROUP BY column_name(s) HAVING group_filter_condition;
+
+63.  WAQ to display the deptno which has atleast two clerk ?
+---   select deptno from employee where designation='clerk' group by deptno having count(*)>=2;
+
+
+==========================================================================================================
 
