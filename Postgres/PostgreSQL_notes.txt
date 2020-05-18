@@ -532,3 +532,21 @@ Syntax : SELECT column_name(s)/*  FROM table_name WHERE row_filter_condition GRO
 
 ==========================================================================================================
 
+64.  WAQ to display deptno which has total sal>10000 in each dept ?
+---   select deptno from employee group by deptno having sum(sal)>10000;
+   
+65.  WAQ to display deptno which has atleast two emp hired on the same date ?
+---   select deptno from employee group by hiredate,deptno having count(*)>=2;
+
+66.  WAQ to display deptno and avg sal of all the dept whose avg sal is > 15000 by excluding the emp whose name begains with r ?
+---    select deptno,avg(sal) from employee where ename not like 'r%' group by deptno having avg(sal)>15000;
+
+
+-----------------
+ SUBQUERY
+-----------------
+A query written inside another query is known as Subquery.
+Subquery also known as nested query or inner query.
+
+
+
