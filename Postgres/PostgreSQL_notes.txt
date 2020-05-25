@@ -542,11 +542,239 @@ Syntax : SELECT column_name(s)/*  FROM table_name WHERE row_filter_condition GRO
 ---    select deptno,avg(sal) from employee where ename not like 'r%' group by deptno having avg(sal)>15000;
 
 
+===========================================================================================================
 -----------------
  SUBQUERY
 -----------------
 A query written inside another query is known as Subquery.
 Subquery also known as nested query or inner query.
+Subquery always enclosed with parentheses.
+
+Syntax : select * from table_name where column_name operator (select */column_name from table_name condition);
+			Outer Query				Inner Query
+
+Types of Subquery :
+1. Single row
+    If the inner query returns one output then it is known as single row subquery.
+    Single value operators such as ( =, <, >, <=, >= ) use in Single row Subquery.
+
+    Syntax : select * from table_name where column_name comparison/relational operator (select */column_name from table_name condition);
+			Outer Query				Inner Query
+
+2. Multi row
+    If the inner query returns more than one output then it is known as multi row subquery.
+    Multi value operator such as (IN, ALL, ANY) use in Multi row subquery.
+
+    Syntax : select * from table_name where column_name operator (select */column_name from table_name condition);
+			Outer Query				Inner Query
+
+=============================================================================================================
+
+67. WAQ to display ename of all the emp who where hired after sumit ?
+---  select ename from employee where hiredate>(select hiredate from employee where ename='sumit');
+
+68. WAQ to display name of all the emp who is working for research dept ?
+---  select ename from employee where deptno=(select deptno from dept where dname='research');
+
+69. WAQ to display name of employee who is working in loc which has atleast 1 'a' in its location ?
+---  select ename from employee where deptno in(select deptno from dept where location like '%a%');
+
+70. WAQ to find 2nd max sal ?
+---  select max(sal) from employee where sal<(select max(sal) from employee);
+
+---------------
+Assignment :
+---------------
+
+71. WAQ to display dname which has atleast two clerk ?
+---  select dname from dept where deptno in(select deptno from employee where designation='clerk' group by designation,deptno having count(*)>=2);
+
+72. WAQ to find 3rd max sal ?
+---  select max(sal) from employee where sal<(select max(sal) from employee where sal<(select max(sal) from employee));
+
+73. WAQ to display the name of the emp who where hired before bipul and there sal is greater than rohit ?
+---  select ename from employee where (hiredate<(select hiredate from employee where ename='bipul')) and (sal>(select sal from employee where ename='rohit'));
+
+
+======================================================================================================================
+-------
+Joins
+-------
+Join is use to retrival of data from multiple table in a same time.
+minimum requirement for joining table is , at least two table should be there.
+
+Types of joins :
+------------------
+1. Cross join
+2. Inner join
+3. Outer join
+4. Self join 
+5. Natural join
+
+==================================================================================================================
+
+1. Cross join (Cartesion join) :
+------------------------------------
+	T1
+---------------------------
+|A1	|B1	|
+---------------------------
+|A	|10	|
+|B	|20	|
+|C	|30	|
+---------------------------
+
+	T2
+---------------------------
+|A2	|B2	|
+---------------------------
+|D	|100	|
+|E	|200	|
+|F	|300	|
+---------------------------
+
+T1 cross join T2
+-----------------------------------------------------
+|A1	|B1	|A2	|B2	|
+-----------------------------------------------------
+|A	|10	|D	|100	|
+|A	|10	|E	|200	|
+|A	|10	|F	|300	|
+|B	|20	|D	|100	|
+|B	|20	|E	|200	|
+|B	|20	|F	|300	|
+|C	|30	|D	|100	|
+|C	|30	|E	|200	|
+|C	|30	|F	|300	|
+-----------------------------------------------------
+
+Syntax : select */Column_name from table1 cross join table2;
+
+
+--------------
+Inner join :
+--------------
+Joining two table with a join condition.
+
+	T1
+--------------------------
+|A1	|B1	|
+--------------------------
+|A	|10	|
+|B	|20	|
+|C	|30	|
+--------------------------
+
+	T2
+--------------------------
+|A2	|B2	|
+--------------------------
+|B	|100	|
+|C	|200	|
+|F	|300	|
+--------------------------
+
+T1.A1=T2.A2
+----------------------------------------------------
+|A1	|B1	|A2	|B2	|
+----------------------------------------------------
+|B	|20	|B	|100	|
+|C	|30	|C	|200	|
+----------------------------------------------------
+
+Syntax : select * from table1 inner join table2 on join_condition;
+             Ex - select * from employee e inner join dept d on e.deptno=d.deptno;
+
+74. WAQ to display dname loc of all the emp whose sal is>=40000 ?
+--- select dname,location from employee e inner join dept d on e.deptno=d.deptno and sal>=40000 ;
+
+75. WAQ to display ename and all the detail of the dept if emp where hired after 2015 and working in delhi or bangalore ?
+---  select ename,d.* from employee e inner join dept d on e.deptno=d.deptno and to_char(hiredate,'YYYY')>'2015' and d.location in('delhi','bangalore');
+
+76. WAQ to display ename,dname if the ename starts with 's' or 'p' and there dname has at least one 'e' in it ?
+---  select ename,dname from employee e inner join dept d on e.deptno=d.deptno and (ename like 's%' or ename like 'p%') and dname like '%e%';
+
+==========================================================================================================
+
+3. Outer Join :
+-----------------
+I.   Left Outer Join
+II.  Right Outer Join
+III. Full Outer Join
+
+I. Left Outer Join :
+----------------------
+
+Whenever we are retriving first we will get inner join and then we will get unmatch record of left table.
+
+Syntax : SELECT */column_name FROM table1 LEFT JOIN table2 ON condition(T1.A1=T2.A2);
+
+      T1 (Left Table)
+--------------------------
+|A1	|B1	|
+--------------------------
+|A	|10	|
+|B	|20	|
+|C	|30	|
+--------------------------
+
+    T2 (Right Table)
+--------------------------
+|A2	|B2	|
+--------------------------
+|D	|100	|
+|B	|200	|
+|C	|300	|
+--------------------------
+
+            LOJ - T1.A1=T2.A2
+----------------------------------------------------
+|A1	|B1	|A2	|B2	|
+----------------------------------------------------
+|B	|20	|B	|200	|
+|C	|30	|C	|300	|
+|A	|10	|null	|null	|
+----------------------------------------------------
+
+
+II. Right Outer Join :
+----------------------
+ 
+Whenever we are retriving first we will get inner join and then we will get unmatch record of right table.
+
+Syntax : SELECT */column_name FROM table1 RIGHT JOIN table2 ON condition(T1.A1=T2.A2);
+
+      T1 (Left Table)
+--------------------------
+|A1	|B1	|
+--------------------------
+|A	|10	|
+|B	|20	|
+|C	|30	|
+--------------------------
+
+    T2 (Right Table)
+--------------------------
+|A2	|B2	|
+--------------------------
+|D	|100	|
+|B	|200	|
+|C	|300	|
+--------------------------
+
+            ROJ - T1.A1=T2.A2
+----------------------------------------------------
+|A1	|B1	|A2	|B2	|
+----------------------------------------------------
+|B	|20	|B	|200	|
+|C	|30	|C	|300	|
+|null	|null	|D	|100	|
+----------------------------------------------------
+
+
+====================================================================================================
+
+
 
 
 

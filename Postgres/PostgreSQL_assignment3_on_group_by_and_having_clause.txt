@@ -1,0 +1,83 @@
+------------------------------------------------------------------------------------------------------------------------
+================ ASSIGNMENT ON GROUP BY AND HAVING CLAUSE ================
+------------------------------------------------------------------------------------------------------------------------
+
+
+1.   WRITE A QUERY TO DISPLAY TOTAL SALARY NEEDED TO PAY EACH JOB IN EMPLOYEE TABLE ?
+---  select sum(sal) total_sal from employee group by designation;
+
+
+2.   WRITE A QUERY TO DISPLAY THE HIRE DATE ON WHICH AT LEAST 3 EMPLOYEES WHERE HIRED ?
+---  select hiredate from employee group by hiredate having count(*)>=3;
+
+
+3.  WRITE A QUERY TO DISPLAY THE DEPARTMENT NUMBER WHICH HAS MORE THAN 2 EMPLOYEES AND THE TOTAL AMOUNT REQUIRED TO PAY THE MONTHLY SALARIES OF ALL THE EMPLOYEES IN THAT DEPARTMENT SHOULD BE MORE THAN 9000  ?
+---  select deptno,sum(sal) from employee group by deptno having count(*)>2 and sum(sal)>9000;
+
+
+4.  WRITE A QUERY TO DISPLAY NUMBER OF EMPLOYEES WORKING IN EACH DEPARTMENT AND ITS’ AVERAGE SALARY BY EXCLUDING ALL THE EMPLOYEES WHOSE SALARY IS LESS THAN THEIR COMMISSION ?
+---  select count(*),avg(sal) from employee where sal>comm group by deptno;
+
+
+5.  WRITE A QUERY TO DISPLAY THE SALARIES WHICH HAS REPETITIONS IN THE SAL COLUMN OF EMPLOYEE TABLE ?
+---  select sal from employee group by sal having count(*)>1;
+
+
+6.  WRITE A QUERY TO DISPLAY THE EMPLOYEE NAME ONLY IF MORE THAN ONE PERSON IN THE EMPLOYEES OF THE COMPANY HAS SAME NAME ?
+---  select ename from employee group by ename having count(*)>1;
+
+
+7.  WRITE A QUERY TO DISPLAY THE DEPARTMENT NUMBER WHOSE AVERAGE SALARY IS BETWEEN 2500 AND 3000 ?
+---  select deptno from employee group by deptno having avg(sal) between 2500 and 3000;
+
+
+8.  WRITE A QUERY TO DISPLAY THE NUMBER OF EMPLOYEES ONLY IF THEY ARE WORKING AS MANAGER OR ANALYST AND THEIR ANNUAL SAL SHOULD END WITH A ZERO, IN EACH DEPARTMENT ?
+---  select count(*) from employee where designation in ('manager','analyst') and cast(sal*12 as varchar) like '%0' group by deptno;
+
+
+9.  WRITE A QUERY TO DISPLAY NO OF CLERKS WORKING IN EACH DEPARTMENT ?
+---  select count(*),deptno from employee where designation='clerk' group by deptno;
+
+
+10. WRITE A QUERY TO DISPLAY HIGHEST SALARY GIVEN TO A MANAGER   IN EACH DEPARTMENT ?
+---  select max(sal) from employee where designation='manager' group by deptno;
+
+
+11. WRITE A QUERY TO DISPLAY NO OF TIMES THE SALARIES HAVE REPEATED IN THE EMP TABLE ?
+---  select sal,count(*) from employee group by sal;
+
+
+12. WRITE A QUERY TO DISPLAY DEPTNO AND MUNBER OF EMPLOYEES WHORKING IN EACH DEPARTMENT EXCEPT FOR THOSE WORKING IN DEPT 10 ?
+---  select deptno,count(*) from employee where deptno<>10 group by deptno;
+
+
+13. WAQTD NUMBER OF EMPLOYEES GETTING COMISSION IN EACH DEPARTMENT ?
+---  select deptno,count(*) from emp where comm is not null group by deptno;
+
+
+14. WAQTD NUMBER OF EMPLOYEES GETTING SALARY MORE THAN 1600 EXCLUDING ALL THE MANAGERS IN EACH DEPARTEMNT ?
+---   select count(*) from employee where sal>1600 and designation<>'manager' group by deptno;
+
+
+15. WAQTD AVERAGE SALARY NEEDED TO PAY ALL THE EMPLOYEES WHO ARE HAVING A REPORTING MANAGER IN EACH JOB ?
+---   select avg(sal) from employee where mgr is not null group by designation;
+
+
+16. WAQTD NUMBER OF EMPLOYEES HIRED INTO THE SAME DEPARTMENT ON THE SAME DAY ?
+---   select count(*) from employee group by hiredate,deptno having count(*)>1;
+
+
+17. WAQTD NUMBER OF EMPLOYEES GETTING THE SAME SALARY , WORKING IN THE SAME DEPARTMENT ?
+---  select count(*),deptno from employee group by sal,deptno having count(*)>1;
+
+
+18. WAQTD MAXIMUM SALARY GIVEN IN EACH DESIGNATION EXCLUDING THOSE WHOS NAME STARTS WITH ‘K’ ?
+---  select max(sal),designation from employee where ename not like 'k%' group by designation;
+
+
+19. WAQTD NUMBER OF EMPLOYEES REPORTING TO 7839 IN EACH DEPT ?
+---  select count(*) from employee where reporting=7839 group by deptno;
+
+
+20. WAQTD NUMBER OF EMPLOYEE NAMES STARTING WITH AN VOWEL IN EACH DEPARTMENT  ?
+---   select count(*) from employee where substr(ename,1,1) in ('a','e','i','o','u') group by deptno;
