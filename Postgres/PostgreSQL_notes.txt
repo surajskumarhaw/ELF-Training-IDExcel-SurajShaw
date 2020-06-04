@@ -56,6 +56,14 @@ Syntax :   drop database DB_Name;
 Syntax :   drop table Table_Name;
 
 
+Truncate :
+------------
+
+Truncate is use to delete the whole table data permanently but it doesn't delete table structure.
+
+Syntax : truncate table table_name;
+
+
 ---------
   DML
 ---------
@@ -114,7 +122,8 @@ WHERE Clause
 - It it use to filter the data.
 - It goes row wise.
 - If the condition satisfy then only it will proceed further
-  Syntax :  select * from Table_Name where condition;
+
+Syntax :  select * from Table_Name where condition;
 
 Questions
 ------------
@@ -418,7 +427,7 @@ Types of function :
 1. Aggregate function (multi row function) 
 --------------------------------------------------
 	- n no. of input 
-	- 1output
+	- one output
 	- EX - AVG()-return average value,
 	          COUNT()-it counts the number of row,
 	          MAX()-return maximum value of the column, 
@@ -617,11 +626,11 @@ Types of joins :
 ------------------------------------
 	T1
 ---------------------------
-|A1	|B1	|
+|A1            |B1             |
 ---------------------------
-|A	|10	|
-|B	|20	|
-|C	|30	|
+|A              |10             |
+|B              |20             |
+|C              |30             |
 ---------------------------
 
 	T2
@@ -694,7 +703,7 @@ Syntax : select * from table1 inner join table2 on join_condition;
 76. WAQ to display ename,dname if the ename starts with 's' or 'p' and there dname has at least one 'e' in it ?
 ---  select ename,dname from employee e inner join dept d on e.deptno=d.deptno and (ename like 's%' or ename like 'p%') and dname like '%e%';
 
-==========================================================================================================
+===========================================================================================================
 
 3. Outer Join :
 -----------------
@@ -774,7 +783,314 @@ Syntax : SELECT */column_name FROM table1 RIGHT JOIN table2 ON condition(T1.A1=T
 
 ====================================================================================================
 
+III. Full Outer Join :
+------------------------
+
+Whenever we are retriving first we will get inner join and then we will get unmatch record of both the table.
+
+Syntax : SELECT */column_name FROM table1 FULL JOIN table2 ON condition(T1.A1=T2.A2);
+
+77. WAQ to obtain a dept name which do not have emp working in it ?
+---  select dname from employee e right join dept d on e.deptno=d.deptno where ename is null;
+
+78.  WAQ to obtain ename who is not working in any dept ?
+---   select e.ename from employee e left join dept d on e.deptno=d.deptno where d.deptno is null;
+
+
+----------------
+Natural Join :
+----------------
+
+When common column present in the both the table then it gives the result as inner join and 
+When common column not present in the both the table then it gives the result as cross join.
+
+Syntax : SELECT */column_name FROM table1 NATURAL JOIN table2;
+
+
+========================================================================================================
+
+Self Join :
+------------
+
+Merging of same table is known as Self join.
+
+Syntax : SELECT * FROM table t1 join table t2 ON condition;
+
+
+Q) Find out the difference b/w drop, truncate and delete ?
+-------------------------------------------------------------------
+DELETE:
+
+Removes rows from a table. Delete rows one at a time & records an entry in the transaction log for each deleted row.
+Deleted data can be rollback.
+DML command
+When the DELETE statement is executed using a row lock, each row in the table is locked for deletion.
+
+
+TRUNCATE:
+
+TRUNCATE removes all rows from a table.
+TRUNCATE TABLE always locks the table and page but not each row.
+If we truncate a table, then truncate table statement cannot be rolled back in some of the database.
+Truncate table statement is a Data Definition Language.
+
+
+DROP:
+
+The DROP in SQL command removes a table along with its structure from the database
 
 
 
 
+--------------------------
+Single Row Function :
+--------------------------
+
+1. Character Single Row Function :
+-----------------------------------------
+   I. Case
+   II. Character
+
+Case :
+-------
+  upper()
+  lower()
+  initcap()
+
+Character :
+-------------
+i.  length(String)
+    Ex - select length(ename) from employee;
+
+ii.  concat(string1, string2, ...., string_n)
+     Ex - select concat(ename,designation) from employee;
+
+iii.  reverse(string)
+      Ex - select reverse(ename) from employee;
+
+iv.  replace(string, old_string, new_string)
+      Ex -  select replace(ename,'suraj','kumar') from employee;
+
+v.  substr(string, starting_position, length)
+     Ex - select substr(ename,2,1) from employee;
+
+vi.  position(search_string IN main_string)
+      Ex - select position('Sql' in 'postgreSql');
+             select position('s' in ename) from employee;
+
+vii.  trim([leading\trailing\both] <remove String> from <main String>)
+       Ex - select trim(leading 'm' from 'madam');
+              select trim(trailing 'm' from 'madam');
+              select trim('m' from 'madam');
+
+-------------------------------------
+Number Single Row Function :
+-------------------------------------
+i.   mod()
+     Ex - select mod(10,3);   o/p-->1
+
+ii.  power()
+     Ex - select power(3,2);   o/p-->9
+
+iii. abs()
+     Ex - select abs(-12);   o/p-->12
+
+iv. trunc()
+     Ex - select trunc(652.54);   o/p-->652
+
+v.  sqrt()
+     Ex - select sqrt(2);   o/p--->1.7
+
+vi. round(number,[scale])
+     Ex -  case1: select round(454.45);          o/p-->454
+             case2: select round(454.4554,2);    o/p-->454.46
+             case3: select round(454.4554,-2);   o/p-->500
+                       select round(454.4554,-1);   o/p-->450
+
+
+=========================================================================================================
+ 
+
+Date and Time functions :
+------------------------------
+
+79. WAQ to show current date ?
+---   select current_date;
+       select now()::date;
+
+80.  WAQ to show current time ?
+---   select current_time;
+       select now()::time;
+
+81.  WAQ to show date and time ?
+---   select clock_timestamp();
+       select now();
+
+82. WAQ to calculate age ?
+---  select age(timestamp '2020-05-29',timestamp '1997-04-21');
+
+83. WAQ to extract the century ?
+---  select extract(century from timestamp '2000-12-15 13:13:23');
+      select extract(century from timestamp '2020-12-15');
+
+84. WAQ to extract the decade :
+---  select extract(decade from timestamp '2020-12-15');
+
+85. WAQ to fetch the days ?
+---  select extract(day from timestamp '2020-12-15');
+
+86. WAQ to fetch the day of a given date ?
+---  select extract(dow from timestamp '2020-12-15');  [dow-day of a week]
+
+87. WAQ to calculate which day is it in the year ?
+---  select extract(doy from timestamp '2020-12-15');  [doy-day of the year]
+
+88. WAQ to calculate which week is it in the year ?
+---  select extract(week from timestamp '2020-05-29');
+
+89. WAQ to find the month ?
+---  select extract(month from timestamp '2020-05-29');
+
+90. WAQ to find hour ?
+---  select extract(hour from timestamp '2020-05-29 13:13:23');
+
+91. WAQ to find minute ?
+---  select extract(min from timestamp '2020-05-29 13:13:23');
+
+
+=================================================================================================
+
+-----------
+    TCL
+-----------
+
+A transaction is a unit of work that is performed against a db.
+It is used with DML command(Insert, Delete, Update).
+
+Properties : ACID property
+
+Atomicity : This property states that a transaction must be treated as an atomic unit, that is, either all of its operations are executed or none. There must be no state in a database where a transaction is left partially completed. States should be defined either before the execution of the transaction or after the execution/abortion/failure of the transaction.
+
+Consistancy : The database must remain in a consistent state after any transaction. No transaction should have any adverse effect on the data residing in the database. If the database was in a consistent state before the execution of a transaction, it must remain consistent after the execution of the transaction as well.
+
+Isolation : In a database system where more than one transaction are being executed simultaneously and in parallel, the property of isolation states that all the transactions will be carried out and executed as if it is the only transaction in the system. No transaction will affect the existence of any other transaction.
+
+Durability : The database should be durable enough to hold all its latest updates even if the system fails or restarts. If a transaction updates a chunk of data in a database and commits, then the database will hold the modified data. If a transaction commits but the system fails before the data could be written on to the disk, then that data will be updated once the system springs back into action.
+
+TCL commands :
+--------------------
+1. Rollback
+2. commit
+3. savepoint
+
+Steps of rollback:
+---------------------
+step 1 : begin;
+step 2 : execute any DML command.
+step 3 : rollback;
+step 4 : end transaction/commit;
+
+
+======================================================================================================
+
+Note : we can't rollback after commit
+
+steps of savepoint and rollback :
+--------------------------------------
+step 1 : begin;
+step 2 : execute any DML command.
+step 3 : savepoint savepoint_name;
+step 4 : execute any DML command.
+step 5 : rollback to savepoint savepoint_name;
+step 6 : end transaction/commit;
+
+
+---------------------
+  Normalization :
+---------------------
+Key Attributes :  A attribute which helps us to uniquely identify in a table.
+
+Non Key Attributes : Apart from key attributes all are non key attributes.
+
+Prime Key Attributes : Which help us to uniquely identify in a table with the help of primary key.
+
+Non prime key attribute : Apart from prime key attribute all are non prime key attributes.
+
+Composite Key attribute : Combination of two or more column which is uniquely identify in a table is know as Composite key attribute.
+
+
+=========================================================================================================
+
+Super Key : The set of all the key attributes of an entity is know as "Super Key".
+
+Foregin Key : It is use to establish the connection between two table.
+
+
+-----------------------------
+Functional Dependency :
+-----------------------------
+
+As the name suggest all the attributes of a table depends upon each other. 
+It helps us to find anomalies.
+
+R----->[X,Y] {empId,name}
+X id determining Y  ------------  empId is determining name
+Y is dependent on X -----------  name is dependent on empId
+
+Types of Functional Dependency :
+----------------------------------------
+1. Total Functional Dependency
+     In a relationship all the attribute are dependent upon a single attribute which is unique.
+     R------>[A,B,C,D]  A is a key attribute  
+     A----->{B,C,D}   B,C,D dependent on attribute A
+
+2. Partial Functional Dependency
+    A relation is said to have partial functional dependency if It consist of a composite key attribute.
+    R------>[A,B,C,D]  A and B is a key attribute 
+    [A,B]------->{C}
+    A------->{D} 
+    [A,B]------->C,D
+
+
+==========================================================================================================
+
+3. Transitive Functional Dependency
+    A relation said to be Transitive Functional Dependency if there exist a relation such that an atrribute is determine by a non key attribute which intern determined by a key attribute.
+    R---->[A,B,C]
+    A----->B
+    B----->C
+    A----->C
+
+Normalization :
+------------------
+The process of the decompositing the table into smaller tables in order to remove redundancy and anomalies by identifying the dependency is known as "Normalization".
+or, The process of reducing the table into its Normal Form is known as "Normalization".
+
+Normal Form : A state of table without a table redundancy and anomalies is known as "Normal Form".
+
+Note : Table are said to be normalized if it is reduced till 3NF
+
+Types of normal forms :
+----------------------------
+I. 1NF -  FIRST NORMAL FORM
+      1. Table should not have duplicate row.
+      2. Every cell in a table should be single value(atomic value)
+
+II. 2NF - SECOND NORMAL FORM
+      1. Table should be 1NF
+      2. Table should not have partial functional dependency(should not have composite key)
+
+III. 3NF - THIRD NORMAL FORM
+      1. Table should be 2NF
+      2. Table should not have transitive functional dependency.
+
+IV. BCNF - BOYCC-CODD NORMAL FORM
+      1. Table should be 3NF
+      2. For any dependency A--->B, A should be a super key.
+
+V.  4NF - FORTH NORMAL FORM
+      1. Table should be BCNF
+      2. Table should not have any Multi-valued Dependency
+
+==========================================================================================================
+     
