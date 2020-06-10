@@ -1093,4 +1093,128 @@ V.  4NF - FORTH NORMAL FORM
       2. Table should not have any Multi-valued Dependency
 
 ==========================================================================================================
-     
+
+Primary key and foreign key relation:
+--------------------------------------------
+create table parent(p_id int primary key,name varchar(20),age int);
+create table child(per_id int,order_id int,order_no int,primary key (per_id,order_id),foreign key(per_id) references parent(p_id));
+
+idexcel_db=# delete from parent where p_id=1;
+ERROR:  update or delete on table "parent" violates foreign key constraint "child_per_id_fkey" on table "child"
+DETAIL:  Key (p_id)=(1) is still referenced from table "child".
+
+
+============================================================================================================
+----------
+  View 
+----------
+View is a virtual table.
+It is a subset of a real table.
+View can either have specific rows based on certain condition.
+
+Syntax : CREATE VIEW view_name AS SELECT * FROM table_name WHERE condition;
+              select * from view_name;
+              drop view view_name;
+              delete from view_name where condition;
+
+*  To check view tables  ---  \dv
+
+Condition :
+-------------
+If we perform delete then it will reflect both the table.
+If we perform insert then it will reflect only origin table.
+
+
+----------------------
+Stored Procedure :
+----------------------
+It is similar to function.
+
+Syntax:
+---------
+create[ or replace ] procedure_name(parameter list)
+Language language_name(like PLpgSQL/SQL)
+AS $$
+Stored procedure body
+$$;
+
+===============================================================================================================
+
+Step 1 - create procedure insert_person(integer,varchar)
+             language 'plpgsql' 
+             as $$ 
+             begin 
+             insert into person values($1,$2); 
+             commit; 
+             end; 
+             $$;
+
+Step 2 : call inser_person(1,'suraj');
+
+* To list out the store procedure/functions - \df
+
+
+===============================================================================================================
+----------------------------
+ User Define Function :
+----------------------------
+Syntax : create function function_name(Parameter)
+              returns return datatype
+              AS $$
+              declare declaration;
+              begin 
+              <function body>
+              return {variable / value}
+              end;
+              $$
+              Language SQL/plpgsql;
+
+
+Example 1 :
+--------------
+create function totalfunction()
+returns integer
+AS $$
+declare noofrows integer;
+begin
+select count(*) into noofrows from employee;
+return noofrows;
+end;
+$$
+language plpgsql;
+
+* To call the function --- select totalfunction();
+
+Example 2 :
+--------------
+create function minmax(a integer,b integer,c integer,OUT max integer,OUT min integer)
+AS $$
+begin
+max=greatest(a,b,c);
+min=least(a,b,c);
+end;
+$$
+language plpgsql;
+
+* To call the function --- select minmax(10,20,40);
+
+* To delete a function --- drop function function_Name;
+
+
+Assignment :
+---------------
+Q) WAQ to create a function which insert value into the table ?
+---   create function instudent(a integer,b varchar,c varchar,d varchar,e varchar,OUT result integer)
+       AS $$
+       begin
+       insert into student values(a,b,c,d,e);
+       end;
+       $$
+       language plpgsql;
+ 
+===================================================================================================================
+------------
+ Trigger :
+------------
+
+
