@@ -2,8 +2,7 @@ body{
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
 }
 .main{
-    margin-top: 104px;
-    margin-left: 530px;
+    margin: 104px auto;
     width: 457px;
 }
 form{
