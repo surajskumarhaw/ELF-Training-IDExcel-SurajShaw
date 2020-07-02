@@ -1,0 +1,332 @@
+// ----------------------------------- EASY --------------------------------------- //
+/*------------- Bitwise Operations -----------------*/
+
+function bitwiseAND(n1, n2) {
+	return n1 & n2;
+}
+
+function bitwiseOR(n1, n2) {
+	return n1 | n2;
+}
+
+function bitwiseXOR(n1, n2) {
+	return n1 ^ n2;
+}
+
+
+/*------------- Matchstick Houses -----------------*/
+
+function matchHouses(step) {
+	if (step === 0) {
+		return 0;
+	}
+	else {
+		return step * 5 + 1;
+	}
+}
+
+
+/*------------- Add up the Numbers from a Single Number -----------------*/
+
+function addUp(num) {
+	var sum = 0;
+	for (var i = num; i > 0; i--) {
+		sum = sum + i;
+	}
+	return sum;
+}
+
+
+/*------------- Which Function Returns the Larger Number? -----------------*/
+
+function whichIsLarger(f, g) {
+	if (f() > g()) {
+		return "f";
+	} else if (f() < g()) {
+		return "g";
+	} else {
+		return "neither";
+	}
+}
+
+
+/*------------- Find the Smallest and Biggest Numbers -----------------*/
+
+function minMax(arr) {
+	var min = Math.min(...arr); //The spread operator (...) turns your array into a list.
+	var max = Math.max(...arr);
+	return [min, max];
+}
+
+
+/*------------- Check if One Array can be Nested in Another -----------------*/
+
+function canNest(arr1, arr2) {
+	var minArr1 = Math.min(...arr1);
+	var minArr2 = Math.min(...arr2);
+	var maxArr1 = Math.max(...arr1);
+	var maxArr2 = Math.max(...arr2);
+	return (minArr1 > minArr2 && maxArr1 < maxArr2) ? true : false;
+}
+
+
+/*------------- Highest digit -----------------*/
+
+function highestDigit(number) {
+	var arr = number.toString().split("");
+	return Math.max(...arr);
+}
+
+
+/*------------- Number of Squares in a n * n Grid -----------------*/
+
+function numberSquares(n) {
+	var res = 0;
+	for (var i = 1; i <= n; i++) {
+		res = res + i * i;
+	}
+	return res;
+}
+
+
+/*------------- Convert a Number to Base 2 -----------------*/
+
+function binary(decimal) {
+	return decimal.toString(2);
+}
+
+
+/*------------- Is it Time for Milk and Cookies? -----------------*/
+
+function timeForMilkAndCookies(date) {
+	if (date.getMonth() === 11 && date.getDate() === 24) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+// ----------------------------------- MEDIUM --------------------------------------- //
+/*------------- Get the Date -----------------*/
+
+function getDay(day) {
+	var d = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	return d[new Date(day).getDay()];
+}
+
+
+/*------------- How Much is True? -----------------*/
+
+function countTrue(arr) {
+	var count = 0;
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] === true) {
+			count++;
+		}
+	}
+	return count;
+}
+
+
+/*------------- A Redundant Function -----------------*/
+
+function redundant(str) {
+	return () => str;
+}
+
+
+/*------------- Factor Chain -----------------*/
+
+function factorChain(arr) {
+	for (var i = 0; i < arr.length; i++) {
+		if (i + 1 < arr.length && arr[i + 1] % arr[i] !== 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+/*------------- Converting Objects to Arrays -----------------*/
+
+function toArray(obj) {
+	return Object.entries(obj);
+}
+
+
+/*------------- Triangular Number Sequence -----------------*/
+
+function triangle(n) {
+	var sum = 0;
+	for (var i = 1; i <= n; i++) {
+		sum = sum + i;
+	}
+	return sum;
+}
+
+
+/*------------- Clone a List -----------------*/
+
+function clone(arr) {
+	var arr1 = [];
+	for (var i = 0; i < arr.length; i++) {
+		arr1.push(arr[i]);
+	}
+	arr1.push(arr);
+	return arr1;
+}
+
+
+/*------------- All About Anonymous Functions: Adding Suffixes -----------------*/
+
+function add_suffix(suffix) {
+	var fun = function (x) {
+		return x + suffix;
+	}
+	return fun;
+}
+
+
+/*------------- Concatenate Variable Number of Input Arrays -----------------*/
+
+function concat(...args) {
+	var arr = [];
+	return arr.concat(...args);
+}
+
+
+/*------------- Array of Multiples -----------------*/
+
+function arrayOfMultiples(num, length) {
+	var arr = [];
+	for (var i = 1; i <= length; i++) {
+		arr.push(num * i);
+	}
+	return arr;
+}
+
+
+/*------------- Convenience Store -----------------*/
+
+function changeEnough(change, amountDue) {
+	var sum = 0;
+	var arr = [0.25, 0.10, 0.05, 0.01];
+	for (var i = 0; i < change.length; i++) {
+		sum = sum + change[i] * arr[i];
+	}
+	if (sum >= amountDue) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/*------------- Return the Objects Keys and Values -----------------*/
+
+function keysAndValues(obj) {
+	var key = Object.keys(obj);
+	var value = Object.values(obj);
+	return [key, value];
+}
+
+
+/*------------- Even or Odd Number of Factors -----------------*/
+
+function factorGroup(num) {
+	var count = 0;
+	for (var i = 1; i <= num; i++) {
+		if (num % i === 0) {
+			count++;
+		}
+	}
+	return (count % 2 == 0) ? "even" : "odd";
+}
+
+
+/*------------- Integer in Range? -----------------*/
+
+function intWithinBounds(n, lower, upper) {
+	return lower <= n && n < upper && Number.isInteger(n);
+}
+
+
+/*------------- Square Every Digit -----------------*/
+
+function squareDigits(n) {
+	var res = n.toString().split("");
+	var sum = "";
+	for (var i = 0; i < res.length; i++) {
+		sum = sum + res[i] * res[i];
+	}
+	return parseInt(sum);
+}
+
+
+/*------------- Get Sum of People's Budget -----------------*/
+
+function getBudgets(arr) {
+	var sum = 0;
+	for (var i = 0; i < arr.length; i++) {
+		sum = sum + arr[i].budget;
+	}
+	return sum;
+}
+
+
+/*------------- Fix the Error: Value vs. Reference Types -----------------*/
+
+function checkEquals(arr1, arr2) {
+	for (let i = 0; i < arr1.length; i++) {
+		if (arr1[i] !== arr2[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+/*------------- Basic Calculator -----------------*/
+
+function calculator(num1, operator, num2) {
+	if (operator === "+") {
+		return num1 + num2;
+	} else if (operator === "-") {
+		return num1 - num2;
+	} else if (operator === "*") {
+		return num1 * num2;
+	} else if (operator === "/" && num2 !== 0) {
+		return num1 / num2;
+	} else {
+		return "Can't divide by 0!";
+	}
+}
+
+
+/*------------- Replace Vowel with Another Character -----------------*/
+
+function replaceVowel(word) {
+	var a = { 'a': 1, 'e': 2, 'i': 3, 'o': 4, 'u': 5 };
+	var replaced = "";
+	for (var i in word) {
+		var c = word[i];
+		if (c in a) {
+			c = a[c];
+		}
+		replaced = replaced + c;
+	}
+	return replaced;
+}
+
+
+/*------------- Hitting the Jackpot -----------------*/
+
+function testJackpot(result) {
+	for (var i = 0; i < result.length; i++) {
+		if (i + 1 < result.length && result[i] !== result[i + 1]) {
+			return false;
+		}
+	}
+	return true;
+}
