@@ -1,5 +1,5 @@
-/*---------------- TO find the greates number --------------------------*/
-console.log("---------------- TO find the greates number ------------------");
+/*---------------- To find the greatest number --------------------------*/
+console.log("---------------- TO find the greatest number ------------------");
 var arr = [80, 70, 60];
 function greater(array) {
     var result = (array[0] > array[1] && array[0] > array[2]) ? array[0] : (array[1] > array[0] && array[1] > array[2]) ? array[1] : array[2];
